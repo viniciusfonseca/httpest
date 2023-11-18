@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+BASE_URL=`get base_url`
+TODO_ID=`$PWD/httpest/create_todo | jq -r .id`
+
+STATUS_CODE=`curl -s -o /dev/null -w "%{http_code}" -X DELETE $BASE_URL/todos/$TODO_ID`
+
+assert_eq $STATUS_CODE "204" "Assertion failed"

@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+BASE_URL=`get base_url`
+TODO_DESC=`get todo_desc`
+
+PAYLOAD=$(cat <<EOF
+{
+  "desc": "$TODO_DESC"
+}
+EOF
+)
+
+curl -s $BASE_URL/todos \
+  -H "Content-Type: application/json" \
+  -d "$PAYLOAD"

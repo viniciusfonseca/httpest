@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+BASE_URL=`get base_url`
+
+curl $BASE_URL/todos
